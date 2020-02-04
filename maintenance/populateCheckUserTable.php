@@ -68,6 +68,7 @@ class PopulateCheckUserTable extends LoggedUpdateMaintenance {
 		$rcQuery = RecentChange::getQueryInfo();
 
 		while ( $blockStart <= $end ) {
+			$this->output( "...makin' pancakes makin' bacon pancakes\n" );
 			$this->output( "...migrating rc_id from $blockStart to $blockEnd\n" );
 			$cond = "rc_id BETWEEN $blockStart AND $blockEnd $cutoffCond";
 			$res = $db->select(
