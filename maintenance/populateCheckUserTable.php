@@ -81,7 +81,7 @@ class PopulateCheckUserTable extends LoggedUpdateMaintenance {
 				// Only add to cu_changes when rc_user is defined.
 				// $row->rc_user may be null when adding CheckUser
 				// to a brand-new MediaWiki installation.
-				if( is_null($row->rc_user) ) {
+				if ( $row->rc_user === null ) {
 					continue;
 				}
 
