@@ -78,16 +78,9 @@ class PopulateCheckUserTable extends LoggedUpdateMaintenance {
 			);
 			$batch = [];
 			foreach ( $res as $row ) {
-				// Only add to cu_changes when rc_user is defined.
-				// $row->rc_user may be null when adding CheckUser
-				// to a brand-new MediaWiki installation.
-				if ( $row->rc_user === null ) {
-					continue;
-				}
-
 				$batch[] = [
 					'cuc_timestamp' => $row->rc_timestamp,
-					'cuc_user' => $row->rc_user,
+					'cuc_user' => $row->rc_user ?? 0,
 					'cuc_user_text' => $row->rc_user_text,
 					'cuc_namespace' => $row->rc_namespace,
 					'cuc_title' => $row->rc_title,
